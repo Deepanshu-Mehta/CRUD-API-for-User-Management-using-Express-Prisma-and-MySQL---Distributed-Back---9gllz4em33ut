@@ -47,7 +47,7 @@ const login = async (req,res)=>{
             }
         
         const jwtSecret = process.env.JWT_SECRET|| "68d97a7b7965450091cd86a139a66caaca857c05511860b11b0064e388ba105328de791c8336dd7561f52ea7f2fa64f2d09810cfea12978b571cdceab05270b"; 
-        const jwtToken = jwt.sign({id : existingUser.id}, jwtSecret, { expiresIn: "1d" });
+        const jwtToken = jwt.sign({userId : existingUser.id}, jwtSecret, { expiresIn: "1d" });
         return res.status(200).cookie('token', jwtToken, {httpOnly: true}).json({userdata: {
     "id": existingUser.id,
     "name": existingUser.name,
